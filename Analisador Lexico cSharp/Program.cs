@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-//TODO Corrigir erro de não ler arquivo até o final
+/// <summary>
+/// Programa original criado por Douglas Liberalesso e Rafahel Mello, tradução para c# por Rafahel Mello
+/// </summary>
 
 namespace Analisador_Lexico_cSharp {
     class Program {
