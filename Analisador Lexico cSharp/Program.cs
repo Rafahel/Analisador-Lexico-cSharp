@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 //TODO Corrigir erro de não ler arquivo até o final
 
 namespace Analisador_Lexico_cSharp {
     class Program {
-
+        
         const int V = -1;
         const int F = 999;
         const int E = 888;
@@ -227,6 +227,10 @@ namespace Analisador_Lexico_cSharp {
                 
             }
             Console.Clear();
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+           
             List<String> entradas = leitura.LerArquivo(caminhoArquivo, nomeDoArquivo);
             Escrita.limpaArquivo(caminhoArquivo, nomeDoArquivo);
             entradas = leitura.separador(entradas);
@@ -324,8 +328,12 @@ namespace Analisador_Lexico_cSharp {
 
 
             }
-
-            Console.WriteLine("Fim.");
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            ts.Hours, ts.Minutes, ts.Seconds,
+            ts.Milliseconds / 10);
+            Console.WriteLine("Tempo para resolver as entradas: " + elapsedTime);
             Console.ReadKey(); // Para o console para que ele não feche
             return 1;
         }
