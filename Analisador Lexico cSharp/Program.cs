@@ -275,7 +275,12 @@ namespace Analisador_Lexico_cSharp {
                 bool mostrador = true;
                 int proxLinha = 0;
 
-  
+                // mostra a palavra traduzida em ints
+                //console.writeline("palavra em ints");
+                //for (int p = 0; p < simbolosemint.length; p++) {
+                //    console.writeline(simbolosemint[p] + " <-");
+                //}
+                //console.writeline();
 
                 String entradaAtual;
                 for (int i = proxLinha; i < entrada.Length; i++) {
