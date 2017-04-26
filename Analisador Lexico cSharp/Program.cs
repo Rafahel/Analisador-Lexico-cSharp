@@ -30,8 +30,7 @@ namespace Analisador_Lexico_cSharp {
             //}
             int [,] tabelaTransicao = new int[,] {
             {F, 4,  1,  1,  1,  1,  1,  1,  1,  1,  1, 9, 9, 9, 10, 11, 12, 12, 28, 44,  51, 61,  77,  82,  90, 19,  19,  96,  19, 19,  103, 112, 38,  49,  115, 19, 124, 137, 151, 156, 160, 163, 47, 19, 19, 15, 15, 16, 16, 17, 18, 14, 14, 14, 14},
-            {V, 2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 5,  F, F, F, F,  F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,                                                 F, F, F, F, F, F, F, F, F, F
-},
+            {V, 2,  2,  2,  2,  2,  2,  2,  2,  2,  2, 5,  F, F, F, F,  F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,                                                 F, F, F, F, F, F, F, F, F, F},
             {V, 3,  3,  3,  3,  3,  3,  3,  3,  3,  3, 5,  F, F, F, F,  F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,                                                 F, F, F, F, F, F, F, F, F, F},
             {V, 4,  4,  4,  4,  4,  4,  4,  4,  4,  4, 5,  F, F, F, F,  F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,                                                 F, F, F, F, F, F, F, F, F, F},
             {V, F, F, F, F, F, F, F, F, F, F,          5,  F, F, F, F,  F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F,                                                 F, F, F, F, F, F, F, F, F, F},
