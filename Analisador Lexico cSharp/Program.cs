@@ -235,11 +235,6 @@ namespace Analisador_Lexico_cSharp {
                     }
                 }
                 catch (Exception) {
-
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("                                        ERRO NO ARQUIVO SELECIONADO OU NENHUM ARQUIVO SELECIONADO\n");
-                    Console.WriteLine("                                                      Aperte qualquer tecla para sair");
-                    Console.ReadKey();
                     return 1;
                 }
 
