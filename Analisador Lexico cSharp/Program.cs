@@ -22,12 +22,8 @@ namespace Analisador_Lexico_cSharp {
 
         [STAThread]
         static int Main(string[] args) {
-            
             UI ui = new UI();
-            ui.SetDesktopLocation(0, 0);
             ui.ShowDialog();
-            //Thread thread = new Thread(new ThreadStart(userInterface));
-            //thread.Start();
             Console.Title = "ANALISADOR LEXICO";
             Console.WriteLine("\n\n");
             Console.WriteLine("                                        ---------- ANALISADOR LEXICO ----------");
@@ -377,7 +373,6 @@ namespace Analisador_Lexico_cSharp {
             ts.Milliseconds / 10);
             Console.WriteLine("Tempo para resolver as entradas: " + elapsedTime);
             Console.ReadKey(); // Para o console para que ele não feche
-            //thread.Join();
 
             return 1;
         }

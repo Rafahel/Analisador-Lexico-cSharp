@@ -16,6 +16,8 @@ namespace Analisador_Lexico_cSharp {
         
         public UI() {
             InitializeComponent();
+            richTextBox1.Text = "Selecione um arquivo com a linguagem válida, logo após o termino do programa será gerado os arquivos de analise_lexica e.txt reconhecimento_lexico.txt";
+            richTextBox1.ReadOnly = true;
         }
         public String getNome() {
             return this.nomeArquivo;
