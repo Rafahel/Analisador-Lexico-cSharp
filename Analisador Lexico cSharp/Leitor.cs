@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text;
+
 
 namespace Analisador_Lexico_cSharp {
     class Leitor {
@@ -25,10 +25,9 @@ namespace Analisador_Lexico_cSharp {
                 this.file.Close();
                 
             }
-            catch (Exception ERRO) {
+            catch (Exception) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("ERRO: ARQUIVO NÃO EXISTENTE");
-                //Console.WriteLine(ERRO.ToString());
                 Console.ResetColor();
                 
             }
@@ -60,7 +59,7 @@ namespace Analisador_Lexico_cSharp {
                 file.Close();
                 return true;
             }
-            catch (Exception ERRO) {
+            catch (Exception) {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Caminho ou arquivo inválido, tente novamente.");
                 Console.ResetColor();
