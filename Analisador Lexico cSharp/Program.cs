@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
+using System.Windows.Forms;
 /// <summary>
 /// Programa original criado por Douglas Liberalesso e Rafahel Mello, tradução para c# por Rafahel Mello
 /// </summary>
@@ -17,7 +19,15 @@ namespace Analisador_Lexico_cSharp {
         const int QTD_ESTADOS = 177;
         const int QTD_SIMBOLOS = 56;
 
+
+        [STAThread]
         static int Main(string[] args) {
+            
+            UI ui = new UI();
+            ui.SetDesktopLocation(0, 0);
+            ui.ShowDialog();
+            //Thread thread = new Thread(new ThreadStart(userInterface));
+            //thread.Start();
             Console.Title = "ANALISADOR LEXICO";
             Console.WriteLine("\n\n");
             Console.WriteLine("                                        ---------- ANALISADOR LEXICO ----------");
@@ -210,28 +220,40 @@ namespace Analisador_Lexico_cSharp {
             Leitor leitura = new Leitor();
             String caminhoArquivo = "C:/Users/Rafahel/Desktop";
             String nomeDoArquivo = "entrada.txt";
-            //while (true) {
-            //    Console.Write("Caminho do arquivo a ser lido: ");
-            //    Console.ForegroundColor = ConsoleColor.Yellow;
-            //    caminhoArquivo = Console.ReadLine();
-            //    Console.ResetColor();
-            //    caminhoArquivo = caminhoArquivo.Replace('\\', '/');
-            //    Console.WriteLine(caminhoArquivo);
-            //    Console.Write("Nome do arquivo a ser lido: ");
-            //    Console.ForegroundColor = ConsoleColor.Yellow;
-            //    nomeDoArquivo = Console.ReadLine();
-            //    Console.ResetColor();
-            //    if (Leitor.arquivoExiste(caminhoArquivo ,nomeDoArquivo)) {
-            //        Console.WriteLine(Leitor.arquivoExiste(caminhoArquivo, nomeDoArquivo));
-            //        break;
-            //    }
-                
-            //}
-            Console.Clear();
+            while (true) {
+                //Console.Write("Caminho do arquivo a ser lido: ");
+                try {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    caminhoArquivo = ui.getCaminho();
+                    Console.ResetColor();
+                    caminhoArquivo = caminhoArquivo.Replace('\\', '/');
+                    Console.WriteLine(caminhoArquivo);
+                    //Console.Write("Nome do arquivo a ser lido: ");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    nomeDoArquivo = ui.getNome();
+                    Console.WriteLine(caminhoArquivo + nomeDoArquivo);
+                    Console.ResetColor();
+                    if (Leitor.arquivoExiste(caminhoArquivo, nomeDoArquivo)) {
+                        Console.WriteLine(Leitor.arquivoExiste(caminhoArquivo, nomeDoArquivo));
+                        break;
+                    }
+                }
+                catch (Exception) {
 
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("                                        ERRO NO ARQUIVO SELECIONADO OU NENHUM ARQUIVO SELECIONADO\n");
+                    Console.WriteLine("                                                      Aperte qualquer tecla para sair");
+                    Console.ReadKey();
+                    return 1;
+                }
+
+            }
+            Console.Clear();
+            
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-           
+            
+            
             List<String> entradas = leitura.LerArquivo(caminhoArquivo, nomeDoArquivo);
             Escrita.limpaArquivo(caminhoArquivo, nomeDoArquivo);
             entradas = leitura.separador(entradas);
@@ -355,8 +377,12 @@ namespace Analisador_Lexico_cSharp {
             ts.Milliseconds / 10);
             Console.WriteLine("Tempo para resolver as entradas: " + elapsedTime);
             Console.ReadKey(); // Para o console para que ele não feche
+            //thread.Join();
+
             return 1;
         }
+        
+       
         
     }
 }
