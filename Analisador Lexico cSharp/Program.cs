@@ -208,25 +208,25 @@ namespace Analisador_Lexico_cSharp {
             {V, 37, 37, 37, 37, 37, 37, 37, 37, 37, 37, F, F, F, F, F,  F, F,   32, 23,  23, 23,  23,  155, 23, 23,  23,  23,  23, 23,  23,  23,  23,  23,  23,  23, 23,  23,  23,  23,  23,  23,  23, 23, 23, F, F, F, F, F, F, F, F, F, F}
             };
             Leitor leitura = new Leitor();
-            String caminhoArquivo;
-            String nomeDoArquivo;
-            while (true) {
-                Console.Write("Caminho do arquivo a ser lido: ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                caminhoArquivo = Console.ReadLine();
-                Console.ResetColor();
-                caminhoArquivo = caminhoArquivo.Replace('\\', '/');
-                Console.WriteLine(caminhoArquivo);
-                Console.Write("Nome do arquivo a ser lido: ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                nomeDoArquivo = Console.ReadLine();
-                Console.ResetColor();
-                if (Leitor.arquivoExiste(caminhoArquivo ,nomeDoArquivo)) {
-                    Console.WriteLine(Leitor.arquivoExiste(caminhoArquivo, nomeDoArquivo));
-                    break;
-                }
+            String caminhoArquivo = "C:/Users/Rafahel/Desktop";
+            String nomeDoArquivo = "entrada.txt";
+            //while (true) {
+            //    Console.Write("Caminho do arquivo a ser lido: ");
+            //    Console.ForegroundColor = ConsoleColor.Yellow;
+            //    caminhoArquivo = Console.ReadLine();
+            //    Console.ResetColor();
+            //    caminhoArquivo = caminhoArquivo.Replace('\\', '/');
+            //    Console.WriteLine(caminhoArquivo);
+            //    Console.Write("Nome do arquivo a ser lido: ");
+            //    Console.ForegroundColor = ConsoleColor.Yellow;
+            //    nomeDoArquivo = Console.ReadLine();
+            //    Console.ResetColor();
+            //    if (Leitor.arquivoExiste(caminhoArquivo ,nomeDoArquivo)) {
+            //        Console.WriteLine(Leitor.arquivoExiste(caminhoArquivo, nomeDoArquivo));
+            //        break;
+            //    }
                 
-            }
+            //}
             Console.Clear();
 
             Stopwatch stopWatch = new Stopwatch();
@@ -242,6 +242,10 @@ namespace Analisador_Lexico_cSharp {
             for (int ent = 0; ent < entradas.Count; ent++) {
                 bool addSimboloFinal = true;
                 Console.ForegroundColor = ConsoleColor.White;
+                if (entradas[ent] == null || entradas[ent] == "") {
+                    entradas.RemoveAt(ent);
+                    
+                }
                 Console.WriteLine("Iniciando teste para a palavra: " + entradas[ent]);
                 int tam = 0;
                 String entrada = entradas[ent];
@@ -289,6 +293,7 @@ namespace Analisador_Lexico_cSharp {
 
                 String entradaAtual;
                 for (int i = proxLinha; i < entrada.Length; i++) {
+                    
                     //Console.WriteLine("flag");
                     entradaAtual = entradas[i];
                     int simboloAtual = simbolosEmInt[i];
@@ -315,6 +320,7 @@ namespace Analisador_Lexico_cSharp {
                 if (mostrador) {
                     Console.ForegroundColor = ConsoleColor.Green; // Muda a Cor do texto exibido no console.
                     Console.Write("      ENTRADA " + entradas[ent] + " ACEITA: ");
+                    saidas.Insert(0, 0);
                     for (int j = 0; j < saidas.Count; j++) {
                         if (saidas[j] >= 0) {
                             Console.Write(saidas[j] + " ");
@@ -323,8 +329,21 @@ namespace Analisador_Lexico_cSharp {
                     Console.WriteLine("\n");
                 }
                 Console.ResetColor(); // Reseta cor do texto exibido no console;
-                Escrita.escreverUltimoSimbolo(caminhoArquivo, nomeDoArquivo, saidas, entrada);
-                
+                int ultimoElementoSaida;
+                if (saidas.Count == 0) {
+                    try {
+                        ultimoElementoSaida = saidas[0];
+                    }
+                    catch (Exception) {
+                        ultimoElementoSaida = -99999;
+                    }
+                    
+                }
+                else {
+                    ultimoElementoSaida = saidas[saidas.Count - 1];
+                }
+                Escrita.escreverUltimoSimbolo(caminhoArquivo, nomeDoArquivo, ultimoElementoSaida, entrada);
+                Escrita.escreveAnaliseLexica(caminhoArquivo, nomeDoArquivo, entrada, saidas);
                 saidas.Clear();
 
 
