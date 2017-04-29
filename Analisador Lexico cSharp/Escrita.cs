@@ -97,10 +97,10 @@ namespace Analisador_Lexico_cSharp {
                 }
 
                 if (i < (valores.Count - 1)) {
-                    mostra = mostra.Insert(i, estado);
+                    mostra = mostra.Insert(i,  "<" +  estado + ">");
                 }
                 else {
-                    mostra += estado;
+                    mostra +=  "<" + estado + ">";
                 }
 
                 file.Write(mostra);
